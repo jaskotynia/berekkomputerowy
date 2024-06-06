@@ -44,24 +44,38 @@ class Game(object):
             # rysowanie 
             self.screen.fill ((0,0,0))
             self.draw()
+            
+            #TODO
+            #jezeli gracz dotknie bandy dostaje minusowy punkt 
 
             # sprawdzanie kolizji gracz 1 
-            if abs(int(self.gracz2.pos.x)-int(self.gracz1.pos.x)) <50 and self.gracz_berek==1 and abs(int(self.gracz2.pos.y)==(self.gracz1.pos.y))-50 :
+            if abs(int(self.gracz2.pos.x)-int(self.gracz1.pos.x)) <50 and \
+                self.gracz_berek==1 and \
+                abs(int(self.gracz2.pos.y)-(self.gracz1.pos.y))<50 :
                 self.gracz_berek=2 
-                self.gracz2.pos.x=self.gracz2.pos.x-200 #ustawienie pozycji
-                
+                self.gracz2.pos.x=0 #ustawienie pozycji
+                self.gracz2.punkty+=1
+                pygame.mixer.init()
+                pygame.mixer.music.load('C:\\git\\jas\\berekkomputerowy\\boom.mp3') 
+                pygame.mixer.music.play()
             # dodawanie punktów
             
             # sprawdzanie klizji gracz 2
-            if abs(int(self.gracz2.pos.x)-int(self.gracz1.pos.x)) <50 and self.gracz_berek==2 and abs(int(self.gracz2.pos.y)==(self.gracz1.pos.y))-50 :
+            elif abs(int(self.gracz2.pos.x)-int(self.gracz1.pos.x)) <50 and \
+                self.gracz_berek==2 and \
+                abs(int(self.gracz2.pos.y)-(self.gracz1.pos.y))<50 :
                 self.gracz_berek=1
-                self.gracz1.pos.x=self.gracz1.pos.x-200 #ustawienie pozycji
-               
+                self.gracz1.pos.x=1000 #ustawienie pozycji
+                self.gracz1.punkty+=1
+                pygame.mixer.init()
+                pygame.mixer.music.load('C:\\git\\jas\\berekkomputerowy\\boom.mp3') 
+                pygame.mixer.music.play()               
             # dodawanie punktów
             
 
             #Tekst
             textsurface = self.font.render(
+                "punkty " + str(int(self.gracz2.punkty))+
                 "gracz2 x " + str(int(self.gracz2.pos.x))+
                 " y " + str(int(self.gracz2.pos.y)) +
                 " berek "+str( self.gracz_berek)
@@ -69,6 +83,7 @@ class Game(object):
             self.screen.blit(textsurface,(0,0))
 
             textsurface2 = self.font.render(
+                "punkty " + str(int(self.gracz1.punkty))+
                 "gracz1 x " + str(int(self.gracz1.pos.x))+
                 " y " + str(int(self.gracz1.pos.y))
                 , False, (255, 255, 255))

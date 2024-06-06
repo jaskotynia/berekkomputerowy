@@ -7,7 +7,7 @@ class player2 (object):
     def __init__(self,game):
         self.game=game
 
- 
+        self.punkty=0;
         self.pos =  Vector2(0,0)
         self.vel =  Vector2(0,0)
         self.acc =  Vector2(0,0)       

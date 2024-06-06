@@ -56,7 +56,7 @@ Granie muzyki
 
 ```
         pygame.mixer.init()
-        pygame.mixer.music.load('C:\\git\\dev-for-kids\\PYTHON\\gra1\\boom.mp3') 
+        pygame.mixer.music.load('C:\\git\\jas\\berekkomputerowy\\boom.mp3') 
         pygame.mixer.music.play()
 ```
 
